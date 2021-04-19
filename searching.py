@@ -22,9 +22,25 @@ def read_data(file_name, field):
     return data[field]
 
 
+def linear_search(sequential_data, number):
+    keys = ["position", "count"]
+    combined = []
+    positions = []
+    quantity = 0
+    for pos, num in enumerate(sequential_data):
+        if num == number:
+            quantity = quantity + 1
+            positions.append(pos)
+    combined.append(positions)
+    combined.append(quantity)
+    count_pos_dict = dict(zip(keys, combined))
+    return count_pos_dict
+
+
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)
-
+    results = linear_search(sequential_data, 10)
+    print(results)
 if __name__ == '__main__':
     main()
